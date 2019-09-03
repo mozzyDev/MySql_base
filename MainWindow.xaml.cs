@@ -20,9 +20,20 @@ namespace MySql_base
     /// </summary>
     public partial class MainWindow : Window
     {
+        private String Text { get; set; }
+        DBConnection db = new DBConnection();
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Btn1_Click(object sender, RoutedEventArgs e)
+        {
+            Text = textBox1.Text;
+            string Query = "insert into tabela1 (kolumna1) values ('" + Text+ "')";
+            db.DatabaseDataChange(Query);
+
         }
     }
 }
